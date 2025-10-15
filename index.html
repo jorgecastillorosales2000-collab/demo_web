@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2d1b3d 0%, #4a2f5c 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Círculos decorativos animados */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(236, 0, 140, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
+            background: #ec008c;
+        }
+
+        .circle-2 {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            right: -150px;
+            transform: translateY(-50%);
+            animation-delay: 2s;
+        }
+
+        .circle-3 {
+            width: 200px;
+            height: 200px;
+            bottom: -50px;
+            left: 30%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+        /* Logo Hello Kitty */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 4rem;
+            color: #000;
+            background: #ec008c;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(236, 0, 140, 0.4);
+            animation: bounce 3s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Contenido principal */
+        .content {
+            text-align: center;
+            z-index: 5;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #ec008c;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Placeholder de imagen */
+        .image-placeholder {
+            width: 280px;
+            height: 200px;
+            background: #000;
+            border-radius: 20px;
+            margin: 3rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder i {
+            font-size: 4rem;
+            color: #4a2f5c;
+        }
+
+        .image-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background: #4a2f5c;
+            border-radius: 50%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Botón Shop */
+        .shop-button {
+            background: #ec008c;
+            color: white;
+            border: none;
+            padding: 1.5rem 8rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(236, 0, 140, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .shop-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(236, 0, 140, 0.6);
+            background: #d6007a;
+        }
+
+        .shop-button:active {
+            transform: translateY(-2px);
+        }
+
+        /* Footer con ícono de casa */
+        .footer {
+            background: #ec008c;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .home-icon-wrapper {
+            background: #ec008c;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: -50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .home-icon-wrapper i {
+            font-size: 3rem;
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                width: 80px;
+                height: 80px;
+                font-size: 2.5rem;
+                top: 20px;
+                left: 20px;
+            }
+
+            .circle-1 {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle-2 {
+                width: 250px;
+                height: 250px;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .image-placeholder {
+                width: 220px;
+                height: 160px;
+                margin: 2rem auto;
+            }
+
+            .image-placeholder i {
+                font-size: 3rem;
+            }
+
+            .shop-button {
+                padding: 1.2rem 4rem;
+                font-size: 1.8rem;
+            }
+
+            .home-icon-wrapper {
+                width: 80px;
+                height: 80px;
+                top: -40px;
+            }
+
+            .home-icon-wrapper i {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                letter-spacing: 0.05em;
+            }
+
+            .shop-button {
+                padding: 1rem 3rem;
+                font-size: 1.5rem;
+                letter-spacing: 0.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-cat"></i>
+        </div>
+
+        <div class="content">
+            <h1>Welcome to<br>My Store</h1>
+            
+            <div class="image-placeholder">
+                <i class="fa-regular fa-image"></i>
+            </div>
+
+            <button class="shop-button">Shop</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="home-icon-wrapper">
+            <i class="fa-solid fa-house"></i>
+        </div>
+    </footer>
+</body>
+</html>
